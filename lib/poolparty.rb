@@ -136,7 +136,7 @@ class Object
   include PoolParty::DefinableResource
 end
 
-class Class
+class Object # was Class
   include PoolParty::PluginModel
 end
 

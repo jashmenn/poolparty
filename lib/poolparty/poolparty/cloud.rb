@@ -42,7 +42,7 @@ module PoolParty
       )
 
       include CloudResourcer
-      include PoolParty::PluginModel
+      include ::PoolParty::PluginModel
       include PoolParty::Resources
       include PoolParty::Callbacks
       include PoolParty::DependencyResolverCloudExtensions
