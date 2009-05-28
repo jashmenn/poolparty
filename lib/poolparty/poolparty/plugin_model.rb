@@ -22,6 +22,7 @@ module PoolParty
 
         PoolParty::Service.add_has_and_does_not_have_methods_for(symc)
         
+        
         lowercase_class_name = symc.downcase
         # Store the name of the class for pretty printing later
         # klass.name = name
@@ -41,6 +42,10 @@ module PoolParty
 
         PoolParty::Cloud::Cloud.class_eval meth
         PoolParty::Service.add_has_and_does_not_have_methods_for(lowercase_class_name.to_sym)
+        
+        # Store the plugins so they will be availble in an array at Plugin.available
+        ::PoolParty::Plugin.available << klass
+        
       end
       
     end
