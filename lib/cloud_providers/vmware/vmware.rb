@@ -96,6 +96,10 @@ module CloudProviders
       VmwareInstance.new( :instance_id => (o[:vmx_file] || vmx_file), :public_ip => public_ip, :dns_name => public_ip,
                           :cloud_provider => self.dsl_options, :keypair_name => keypair.basename)
     end
+
+    def generate_keypair(n=nil)
+      puts "[VM Ware] not generating key. This is just a stub, use id_rsa instead"
+    end
     
     # Search for the vmrun binary
     def path_to_binary
