@@ -31,7 +31,6 @@ module PoolParty
     end
     
     def after_loaded
-      cloud_provider.keypair = keypair
       create_load_balancers # Create the load balancers from the args
     end
     
@@ -90,6 +89,7 @@ module PoolParty
       return @cloud_provider if @cloud_provider
       self.cloud_provider_name = provider_symbol
       cloud_provider(o, &block)
+      cloud_provider.keypair = keypair
     end
     
     def cookbook_repos(*dirs)
