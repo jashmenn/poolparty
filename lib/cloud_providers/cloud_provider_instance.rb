@@ -253,6 +253,10 @@ module CloudProviders
       def valid?
         (internal_ip.nil? || name.nil?) ? false : true
       end
+
+      def address
+          self[:private_dns_name] || self[:ip] || self[:dns_name] || self[:public_ip]
+      end
       
       private
       
