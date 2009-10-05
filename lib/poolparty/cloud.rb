@@ -123,6 +123,20 @@ module PoolParty
     def chef_attributes(h={}, &block)
       @chef_attributes ||= ChefAttribute.new(h, &block)
     end
+
+    def clouds_collect(cloud_names, node_meth, &block)
+      result = []
+      cloud_names.each do |cname|
+        iresult = []
+        if (c = self.clouds[cname])
+          c.nodes(:status => 'running').each_with_index do |n, i|
+            iresult << n.send(node_meth)
+          end
+        end
+        result << block.call(c, iresult)
+      end
+      result 
+    end
     
     private
     def _cookbook_repos
